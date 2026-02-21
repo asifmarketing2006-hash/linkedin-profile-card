@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta -->
+  <title>M Asif Khan — Full Stack Developer</title>
+  <meta name="description" content="M Asif Khan is a Full Stack Developer specializing in React, Node.js, and Cloud technologies. Open to new opportunities." />
+  <meta name="author" content="M Asif Khan" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="profile" />
+  <meta property="og:title"       content="M Asif Khan — Full Stack Developer" />
+  <meta property="og:description" content="Full Stack Developer · React · Node.js · Cloud · Open to Work" />
+  <meta property="og:url"         content="https://masifkhan.dev" />
+  <meta property="og:image"       content="https://i.pravatar.cc/400?img=12" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="M Asif Khan — Full Stack Developer" />
+  <meta name="twitter:description" content="Full Stack Developer · React · Node.js · Cloud · Open to Work" />
+  <meta name="twitter:image"       content="https://i.pravatar.cc/400?img=12" />
+  <meta name="twitter:creator"     content="@masifkhan" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      /* Brand Colors */
+      --color-brand-900:   #061e35;
+      --color-brand-800:   #0a2d50;
+      --color-brand-700:   #0a4272;
+      --color-brand-600:   #0060a8;
+      --color-brand-500:   #0077b5;
+      --color-brand-400:   #1a91d1;
+      --color-brand-300:   #4db0e4;
+      --color-brand-100:   #cce8f6;
+      --color-brand-50:    #e8f4fb;
+
+      /* Neutral Colors */
+      --color-neutral-900: #111827;
+      --color-neutral-800: #1f2937;
+      --color-neutral-700: #374151;
+      --color-neutral-600: #4b5563;
+      --color-neutral-500: #6b7280;
+      --color-neutral-400: #9ca3af;
+      --color-neutral-300: #d1d5db;
+      --color-neutral-200: #e5e7eb;
+      --color-neutral-100: #f3f4f6;
+      --color-neutral-50:  #f9fafb;
+      --color-white:       #ffffff;
+
+      /* Typography — fluid scale */
+      --font-display: 'Bricolage Grotesque', sans-serif;
+      --font-body:    'Plus Jakarta Sans', sans-serif;
+
+      --text-xs:   clamp(0.688rem, 0.65rem  + 0.19vw, 0.75rem);
+      --text-sm:   clamp(0.813rem, 0.77rem  + 0.22vw, 0.875rem);
+      --text-base: clamp(0.875rem, 0.83rem  + 0.22vw, 1rem);
+      --text-md:   clamp(1rem,     0.95rem  + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1.05rem  + 0.38vw, 1.25rem);
+      --text-xl:   clamp(1.25rem,  1.1rem   + 0.75vw, 1.5rem);
+      --text-2xl:  clamp(1.5rem,   1.25rem  + 1.25vw, 2rem);
+
+      /* Spacing */
+      --space-1:  4px;
+      --space-2:  8px;
+      --space-3:  12px;
+      --space-4:  16px;
+      --space-5:  20px;
+      --space-6:  24px;
+      --space-7:  28px;
+      --space-8:  32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-16: 64px;
+
+      /* Radii */
+      --radius-sm:   6px;
+      --radius-md:   12px;
+      --radius-lg:   18px;
+      --radius-xl:   24px;
+      --radius-2xl:  32px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-sm:    0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md:    0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg:    0 8px 28px rgba(0,0,0,0.10);
+      --shadow-xl:    0 16px 48px rgba(0,0,0,0.12);
+      --shadow-brand: 0 4px 16px rgba(0,119,181,0.22);
+
+      /* Transitions */
+      --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+      --ease-io:  cubic-bezier(0.4, 0.0, 0.2, 1);
+      --dur-fast: 150ms;
+      --dur-base: 220ms;
+      --dur-slow: 380ms;
+
+      /* Layout */
+      --card-max-width: 740px;
+      --cover-height:   170px;
+      --avatar-size:    108px;
+      --avatar-border:  4px;
+      --avatar-offset:  calc((var(--avatar-size) / 2) + var(--avatar-border));
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-neutral-700);
+      background-color: var(--color-brand-50);
+      background-image:
+        radial-gradient(ellipse 90% 50% at 50% -5%, rgba(0,119,181,0.10) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 92% 95%, rgba(0,119,181,0.06) 0%, transparent 60%);
+      min-height: 100vh;
+      display: grid;
+      place-items: start center;
+      padding: var(--space-10) var(--space-4) var(--space-16);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; }
+
+    /* ============================================================
+       FOCUS — WCAG AA
+    ============================================================ */
+    :focus-visible {
+      outline: 2.5px solid var(--color-brand-500);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ============================================================
+       PAGE WRAPPER
+    ============================================================ */
+    .page-wrapper {
+      width: 100%;
+      max-width: var(--card-max-width);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    /* ============================================================
+       CARD
+    ============================================================ */
+    .profile-card {
+      background: var(--color-white);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      will-change: transform;
+      transition:
+        transform    var(--dur-slow) var(--ease-out),
+        box-shadow   var(--dur-slow) var(--ease-out);
+      animation: slide-up 0.55s var(--ease-out) both;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* ============================================================
+       COVER
+    ============================================================ */
+    .card-cover {
+      position: relative;
+      height: var(--cover-height);
+      background: linear-gradient(140deg,
+        var(--color-brand-900)  0%,
+        var(--color-brand-700) 50%,
+        var(--color-brand-400) 100%
+      );
+      overflow: hidden;
+    }
+
+    .card-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 60%, rgba(255,255,255,0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(0,184,169,0.10) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .cover-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.07);
+      pointer-events: none;
+    }
+
+    .cover-circle--lg {
+      width: 240px;
+      height: 240px;
+      bottom: -70px;
+      right: -70px;
+    }
+
+    .cover-circle--sm {
+      width: 90px;
+      height: 90px;
+      top: 18px;
+      right: 140px;
+    }
+
+    .cover-badge {
+      position: absolute;
+      bottom: var(--space-4);
+      left: var(--space-5);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 5px 14px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-white);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .cover-badge__dot {
+      width: 7px;
+      height: 7px;
+      background: #4ade80;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse-dot 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0   rgba(74,222,128,0.5); }
+      50%       { box-shadow: 0 0 0 5px rgba(74,222,128,0);   }
+    }
+
+    /* ============================================================
+       IDENTITY
+    ============================================================ */
+    .card-identity {
+      position: relative;
+      padding: 0 var(--space-7) var(--space-6);
+    }
+
+    .identity-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-2);
+      padding-top: var(--space-4);
+    }
+
+    .avatar-anchor {
+      position: absolute;
+      top: calc(-1 * var(--avatar-offset));
+      left: var(--space-7);
+    }
+
+    .avatar-frame {
+      width: var(--avatar-size);
+      height: var(--avatar-size);
+      border-radius: 50%;
+      padding: var(--avatar-border);
+      background: var(--color-white);
+      box-shadow: var(--shadow-md);
+      transition: box-shadow var(--dur-base) var(--ease-io);
+    }
+
+    .avatar-frame:hover {
+      box-shadow: 0 0 0 3px var(--color-brand-400), var(--shadow-md);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--color-brand-100);
+    }
+
+    .identity-body {
+      margin-top: calc(var(--avatar-offset) + var(--space-3));
+    }
+
+    .identity-name {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--color-neutral-900);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .identity-headline {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-500);
+      margin-top: var(--space-2);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    .identity-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-1) var(--space-4);
+      margin-top: var(--space-4);
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: var(--text-xs);
+      color: var(--color-neutral-500);
+    }
+
+    .meta-chip a {
+      color: var(--color-brand-500);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color var(--dur-fast) var(--ease-io);
+    }
+
+    .meta-chip a:hover,
+    .meta-chip a:focus-visible {
+      color: var(--color-brand-700);
+      text-decoration: underline;
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      line-height: 1;
+      border-radius: var(--radius-full);
+      padding: 9px 20px;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      user-select: none;
+      white-space: nowrap;
+      transition:
+        background-color var(--dur-fast) var(--ease-io),
+        color            var(--dur-fast) var(--ease-io),
+        border-color     var(--dur-fast) var(--ease-io),
+        box-shadow       var(--dur-fast) var(--ease-io),
+        transform        var(--dur-fast) var(--ease-io);
+    }
+
+    .btn:active { transform: scale(0.97); }
+
+    .btn--primary {
+      background: var(--color-brand-500);
+      color: var(--color-white);
+      border-color: var(--color-brand-500);
+      box-shadow: var(--shadow-brand);
+    }
+
+    .btn--primary:hover {
+      background: var(--color-brand-700);
+      border-color: var(--color-brand-700);
+      box-shadow: 0 4px 20px rgba(0,119,181,0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--color-brand-500);
+      border-color: var(--color-brand-300);
+    }
+
+    .btn--ghost:hover {
+      background: var(--color-brand-50);
+      border-color: var(--color-brand-500);
+      transform: translateY(-1px);
+    }
+
+    /* ============================================================
+       STATS BAR
+    ============================================================ */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--color-neutral-200);
+      border-bottom: 1px solid var(--color-neutral-200);
+    }
+
+    .stat-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-4) var(--space-2);
+      gap: 3px;
+      border-right: 1px solid var(--color-neutral-200);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background var(--dur-fast) var(--ease-io);
+    }
+
+    .stat-cell:last-child { border-right: none; }
+
+    .stat-cell:hover,
+    .stat-cell:focus-visible { background: var(--color-brand-50); }
+
+    .stat-cell__value {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--color-brand-500);
+      line-height: 1;
+    }
+
+    .stat-cell__label {
+      font-size: var(--text-xs);
+      color: var(--color-neutral-400);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    /* ============================================================
+       SECTIONS
+    ============================================================ */
+    .card-section {
+      padding: var(--space-6) var(--space-7);
+      border-bottom: 1px solid var(--color-neutral-100);
+    }
+
+    .card-section:last-of-type { border-bottom: none; }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: var(--text-md);
+      font-weight: 600;
+      color: var(--color-neutral-900);
+      margin-bottom: var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--color-neutral-200), transparent);
+    }
+
+    /* About */
+    .about-text {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-600);
+      line-height: 1.85;
+    }
+
+    /* Experience */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+
+    .exp-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--color-brand-600), var(--color-brand-400));
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .exp-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-neutral-900);
+      line-height: 1.3;
+    }
+
+    .exp-company {
+      font-size: var(--text-xs);
+      color: var(--color-neutral-500);
+      margin-top: 3px;
+    }
+
+    .exp-duration {
+      font-size: var(--text-xs);
+      color: var(--color-neutral-400);
+      margin-top: 2px;
+    }
+
+    /* Skills */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .skill-pill {
+      font-size: var(--text-xs);
+      font-weight: 500;
+      padding: 5px 13px;
+      border-radius: var(--radius-full);
+      background: var(--color-brand-50);
+      color: var(--color-brand-700);
+      border: 1px solid var(--color-brand-100);
+      cursor: default;
+      transition:
+        background    var(--dur-fast) var(--ease-io),
+        color         var(--dur-fast) var(--ease-io),
+        border-color  var(--dur-fast) var(--ease-io),
+        transform     var(--dur-fast) var(--ease-io),
+        box-shadow    var(--dur-fast) var(--ease-io);
+    }
+
+    .skill-pill:hover {
+      background: var(--color-brand-500);
+      color: var(--color-white);
+      border-color: var(--color-brand-500);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,119,181,0.25);
+    }
+
+    /* Recommendation */
+    .rec-block {
+      position: relative;
+      background: var(--color-neutral-50);
+      border: 1px solid var(--color-neutral-200);
+      border-left: 3px solid var(--color-brand-400);
+      border-radius: var(--radius-md);
+      padding: var(--space-5) var(--space-5) var(--space-5) var(--space-6);
+    }
+
+    .rec-quote-icon {
+      font-family: Georgia, serif;
+      font-size: 52px;
+      line-height: 1;
+      color: var(--color-brand-100);
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .rec-text {
+      font-size: var(--text-sm);
+      color: var(--color-neutral-600);
+      line-height: 1.8;
+      padding-left: var(--space-6);
+    }
+
+    .rec-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+      padding-left: var(--space-6);
+    }
+
+    .rec-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-brand-500);
+      display: grid;
+      place-items: center;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-white);
+      flex-shrink: 0;
+    }
+
+    .rec-author-name {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-neutral-800);
+    }
+
+    .rec-author-role {
+      font-size: var(--text-xs);
+      color: var(--color-neutral-400);
+      margin-top: 1px;
+    }
+
+    /* ============================================================
+       CARD FOOTER
+    ============================================================ */
+    .card-footer {
+      background: var(--color-neutral-900);
+      padding: var(--space-5) var(--space-7);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .footer-brand {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-brand strong {
+      color: var(--color-brand-300);
+      font-weight: 600;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: var(--space-5);
+      list-style: none;
+    }
+
+    .footer-nav a {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color var(--dur-fast) var(--ease-io);
+    }
+
+    .footer-nav a:hover,
+    .footer-nav a:focus-visible { color: var(--color-brand-300); }
+
+    .footer-socials {
+      display: flex;
+      gap: var(--space-2);
+      list-style: none;
+    }
+
+    .social-icon {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
+      text-decoration: none;
+      transition:
+        background   var(--dur-fast) var(--ease-io),
+        border-color var(--dur-fast) var(--ease-io),
+        transform    var(--dur-fast) var(--ease-io);
+    }
+
+    .social-icon:hover,
+    .social-icon:focus-visible {
+      background: var(--color-brand-600);
+      border-color: var(--color-brand-600);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       PAGE FOOTER
+    ============================================================ */
+    .page-footer {
+      text-align: center;
+      font-size: var(--text-xs);
+      color: var(--color-neutral-400);
+    }
+
+    /* ============================================================
+       RESPONSIVE — TABLET ≤768px
+    ============================================================ */
+    @media (max-width: 768px) {
+      :root {
+        --cover-height: 140px;
+        --avatar-size:  88px;
+      }
+
+      body { padding: var(--space-6) var(--space-3) var(--space-12); }
+
+      .card-identity { padding: 0 var(--space-5) var(--space-5); }
+      .avatar-anchor { left: var(--space-5); }
+
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(3),
+      .stat-cell:nth-child(4) { border-top: 1px solid var(--color-neutral-200); }
+
+      .card-section  { padding: var(--space-5); }
+      .card-footer   { padding: var(--space-4) var(--space-5); flex-direction: column; align-items: flex-start; }
+      .footer-nav    { display: none; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — MOBILE ≤480px
+    ============================================================ */
+    @media (max-width: 480px) {
+      :root {
+        --cover-height:  120px;
+        --avatar-size:   76px;
+        --avatar-border: 3px;
+      }
+
+      .card-identity { padding: 0 var(--space-4) var(--space-4); }
+      .avatar-anchor { left: var(--space-4); }
+
+      .identity-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .btn {
+        padding: 8px 14px;
+        font-size: var(--text-xs);
+      }
+
+      .card-section { padding: var(--space-4); }
+
+      .section-heading {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-4);
+      }
+
+      .exp-item {
+        grid-template-columns: 38px 1fr;
+        gap: var(--space-3);
+      }
+
+      .exp-logo { width: 38px; height: 38px; font-size: 16px; }
+      .card-footer { padding: var(--space-4); }
+    }
+
+    /* ============================================================
+       REDUCED MOTION
+    ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-wrapper">
+
+    <main>
+      <article class="profile-card">
+
+        <!-- COVER -->
+        <header class="card-cover" aria-label="Profile cover photo">
+          <div class="cover-circle cover-circle--lg" aria-hidden="true"></div>
+          <div class="cover-circle cover-circle--sm" aria-hidden="true"></div>
+          <div class="cover-badge">
+            <span class="cover-badge__dot" aria-hidden="true"></span>
+            Open to Work
+          </div>
+        </header>
+
+        <!-- IDENTITY -->
+        <div class="card-identity">
+          <div class="identity-actions" role="group" aria-label="Profile actions">
+            <button class="btn btn--ghost" type="button" aria-label="Send a message to M Asif Khan">
+              Message
+            </button>
+            <button class="btn btn--primary" type="button" aria-label="Connect with M Asif Khan">
+              + Connect
+            </button>
+          </div>
+
+          <div class="avatar-anchor">
+            <div class="avatar-frame">
+              <img
+                class="avatar-img"
+                src="https://i.pravatar.cc/200?img=12"
+                alt="M Asif Khan — Full Stack Developer based in Lahore, Pakistan"
+                width="108"
+                height="108"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <div class="identity-body">
+            <h1 class="identity-name">M Asif Khan</h1>
+            <p class="identity-headline">
+              Full Stack Developer · Building performant, scalable web apps
+              with React, Node.js &amp; Cloud-native architectures.
+            </p>
+            <div class="identity-meta">
+              <span class="meta-chip">
+                <span aria-hidden="true">📍</span>
+                Lahore, Punjab, Pakistan
+              </span>
+              <span class="meta-chip">
+                <span aria-hidden="true">🎓</span>
+                FAST NUCES — BS Computer Science
+              </span>
+              <span class="meta-chip">
+                <span aria-hidden="true">🔗</span>
+                <a
+                  href="https://masifkhan.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit masifkhan.dev (opens in new tab)"
+                >masifkhan.dev</a>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats-bar">
+          <a class="stat-cell" href="#" aria-label="500 plus connections">
+            <span class="stat-cell__value">500+</span>
+            <span class="stat-cell__label">Connections</span>
+          </a>
+          <a class="stat-cell" href="#" aria-label="14 projects">
+            <span class="stat-cell__value">14</span>
+            <span class="stat-cell__label">Projects</span>
+          </a>
+          <a class="stat-cell" href="#" aria-label="3 years of experience">
+            <span class="stat-cell__value">3 yrs</span>
+            <span class="stat-cell__label">Experience</span>
+          </a>
+          <a class="stat-cell" href="#" aria-label="Profile strength 96 percent">
+            <span class="stat-cell__value">96%</span>
+            <span class="stat-cell__label">Strength</span>
+          </a>
+        </div>
+
+        <!-- ABOUT -->
+        <section class="card-section" aria-labelledby="heading-about">
+          <h2 class="section-heading" id="heading-about">About</h2>
+          <p class="about-text">
+            I'm a Full Stack Developer with 3+ years of experience building production-grade
+            web applications — from pixel-perfect React interfaces to robust Node.js APIs and
+            cloud-deployed backends. I care deeply about code quality, developer experience,
+            and shipping products that users love. Currently exploring AI-integrated product
+            development and contributing to open-source projects.
+          </p>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="card-section" aria-labelledby="heading-exp">
+          <h2 class="section-heading" id="heading-exp">Experience</h2>
+          <div class="exp-list">
+
+            <div class="exp-item">
+              <div class="exp-logo" aria-hidden="true">🏢</div>
+              <div>
+                <div class="exp-title">Senior Full Stack Developer</div>
+                <div class="exp-company">XYZ Technologies · Full-time</div>
+                <div class="exp-duration">Jan 2023 – Present · 2 yrs 1 mo · Lahore, PK</div>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-logo" aria-hidden="true">🚀</div>
+              <div>
+                <div class="exp-title">Frontend Developer</div>
+                <div class="exp-company">StartupABC · Contract · Remote</div>
+                <div class="exp-duration">Jun 2021 – Dec 2022 · 1 yr 6 mos</div>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-logo" aria-hidden="true">💻</div>
+              <div>
+                <div class="exp-title">Freelance Software Developer</div>
+                <div class="exp-company">Self-employed · Remote</div>
+                <div class="exp-duration">Jan 2020 – May 2021 · 1 yr 4 mos</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="card-section" aria-labelledby="heading-skills">
+          <h2 class="section-heading" id="heading-skills">Skills</h2>
+          <div class="skills-wrap">
+            <span class="skill-pill">React.js</span>
+            <span class="skill-pill">Next.js</span>
+            <span class="skill-pill">TypeScript</span>
+            <span class="skill-pill">Node.js</span>
+            <span class="skill-pill">Express.js</span>
+            <span class="skill-pill">MongoDB</span>
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">REST APIs</span>
+            <span class="skill-pill">GraphQL</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">AWS</span>
+            <span class="skill-pill">Tailwind CSS</span>
+            <span class="skill-pill">Git · CI/CD</span>
+          </div>
+        </section>
+
+        <!-- RECOMMENDATION -->
+        <section class="card-section" aria-labelledby="heading-rec">
+          <h2 class="section-heading" id="heading-rec">Recommendation</h2>
+          <figure class="rec-block">
+            <span class="rec-quote-icon" aria-hidden="true">"</span>
+            <blockquote class="rec-text">
+              Asif is one of the most dependable and technically sharp developers I've worked with.
+              He delivers clean, scalable code under tight deadlines, communicates proactively,
+              and elevates everyone around him — a rare combination of technical depth and great
+              product instinct.
+            </blockquote>
+            <figcaption class="rec-author">
+              <div class="rec-avatar" aria-hidden="true">SC</div>
+              <div>
+                <div class="rec-author-name">Sarah Chen</div>
+                <div class="rec-author-role">Engineering Manager · XYZ Technologies</div>
+              </div>
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- CARD FOOTER -->
+        <footer class="card-footer">
+          <p class="footer-brand">
+            <strong>M Asif Khan</strong> · Portfolio Component
+          </p>
+          <nav aria-label="Footer links">
+            <ul class="footer-nav">
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="#">Resume</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+          <ul class="footer-socials" aria-label="Social links">
+            <li><a class="social-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)">💼</a></li>
+            <li><a class="social-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)">🐙</a></li>
+            <li><a class="social-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X (opens in new tab)">𝕏</a></li>
+            <li><a class="social-icon" href="#" target="_blank" rel="noopener noreferrer" aria-label="Personal website (opens in new tab)">🌐</a></li>
+          </ul>
+        </footer>
+
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p>© 2026 M Asif Khan · Semantic HTML5 &amp; Modern CSS · Portfolio-ready component</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
